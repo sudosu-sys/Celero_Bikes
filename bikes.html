@@ -1,0 +1,381 @@
+<!-- bikes.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bikes | CELERO - Engineering Speed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;600&family=Michroma&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #050505; }
+        .font-sport { font-family: 'Archivo Black', sans-serif; font-style: italic; }
+        .font-logo { font-family: 'Michroma', sans-serif; }
+        .text-outline { color: transparent; -webkit-text-stroke: 1px #ffffff; opacity: 0.3; }
+        
+        /* Interactive Card Effects */
+        .bike-card:hover .bike-img { transform: scale(1.05) translateY(-5px); }
+        /* Removed clip-path-slant to fix the weird angle */
+        
+        /* Active Tab Styling */
+        .tab-btn.active {
+            color: #FFFFFF;
+            border-bottom-color: #FF4400;
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { orange: '#FF4400', black: '#050505', gray: '#1A1A1A' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-black text-white overflow-x-hidden min-h-screen flex flex-col">
+
+    <nav class="w-full flex justify-between items-center py-6 px-8 md:px-12 relative z-50">
+        <div class="flex items-center gap-1 group cursor-pointer" onclick="window.location.href='index2.html'">
+            <span class="font-logo text-xl md:text-2xl font-bold tracking-widest text-white group-hover:text-gray-200 transition-colors">CELERO</span>
+            <div class="w-0 h-0 border-l-[6px] border-l-transparent border-b-[6px] border-b-brand-orange border-r-[6px] border-r-transparent mb-3 ml-[-2px]"></div>
+        </div>
+
+        <div class="hidden md:flex items-center gap-12 text-sm font-medium tracking-wide italic text-gray-300">
+            <a href="index2.html" class="hover:text-brand-orange transition-colors">Home</a>
+            <a href="bikes.html" class="text-white hover:text-brand-orange transition-colors">Bikes</a>
+            <a href="dealers.html" class="hover:text-brand-orange transition-colors">Dealer</a>
+            <a href="events.html" class="hover:text-brand-orange transition-colors">Event</a>
+        </div>
+
+        <a href="#" class="bg-brand-orange hover:bg-orange-600 text-white text-sm font-bold italic px-8 py-3 transform skew-x-[-10deg] transition-transform hover:scale-105">
+            <span class="block transform skew-x-[10deg]">Shop All</span>
+        </a>
+    </nav>
+
+    <header class="relative w-full min-h-[75vh] flex items-center overflow-hidden border-b border-white/10">
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="images/hero1.jpg" 
+                onerror="this.src='https://images.unsplash.com/photo-1571068316344-75bc76f778f7?q=80&w=2070&auto=format&fit=crop'"
+                alt="Engineering Speed" 
+                class="w-full h-full object-cover opacity-60 transform scale-105"
+            >
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-black via-brand-black/90 to-transparent"></div>
+            <div class="absolute inset-0 bg-[linear-gradient(115deg,transparent_49%,#1a1a1a_49%,#1a1a1a_50%,transparent_50%)] bg-[size:20px_20px] opacity-20 mix-blend-overlay"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-[1800px] mx-auto px-8 md:px-12 grid grid-cols-1 md:grid-cols-12 items-center h-full">
+            
+            <div class="md:col-span-7 space-y-8 pt-20">
+                <div class="flex items-center gap-4 animate-pulse">
+                    <div class="h-[2px] w-12 bg-brand-orange"></div>
+                    <p class="text-brand-orange font-bold text-xs uppercase tracking-[0.4em]">The 2026 Collection</p>
+                </div>
+                
+                <h1 class="font-sport text-6xl md:text-8xl lg:text-9xl uppercase leading-[0.85] italic tracking-tighter transform -skew-x-2">
+                    <span class="block text-white">Dominate</span>
+                    <span class="block text-outline opacity-100">Every</span>
+                    <span class="block text-white">Terrain</span>
+                </h1>
+                
+                <div class="flex flex-col md:flex-row gap-8 md:items-center pt-4">
+                    <p class="text-gray-400 text-sm md:text-base max-w-md leading-relaxed border-l-2 border-brand-orange pl-6">
+                        Precision engineering meets raw power. Explore the lineup designed to shatter records and redefine your limits.
+                    </p>
+                    
+                    <button onclick="document.getElementById('bike-grid').scrollIntoView({behavior: 'smooth'})" class="w-fit group flex items-center gap-3 text-white font-bold uppercase italic tracking-wider hover:text-brand-orange transition-colors">
+                        <span class="border-b border-brand-orange pb-1">View Models</span>
+                        <i class="fa-solid fa-arrow-down group-hover:translate-y-1 transition-transform"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="hidden md:block md:col-span-5 relative h-full min-h-[500px]">
+                <div class="absolute right-[-20%] top-1/2 transform -translate-y-1/2 -rotate-90 origin-center opacity-10 pointer-events-none">
+                    <h2 class="font-sport text-[12rem] text-outline leading-none whitespace-nowrap">UNLEASHED</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-[1800px] mx-auto px-8 md:px-12 pt-24 pb-24 flex-grow">
+        
+        <div class="flex gap-8 mb-12 border-b border-white/10 overflow-x-auto whitespace-nowrap" id="filter-container">
+            <button onclick="filterSelection('all')" class="tab-btn active text-gray-500 font-bold italic border-b-2 border-transparent hover:text-white transition-colors pb-4 uppercase tracking-wider text-sm">All Series</button>
+            <button onclick="filterSelection('road')" class="tab-btn text-gray-500 font-bold italic border-b-2 border-transparent hover:text-white transition-colors pb-4 uppercase tracking-wider text-sm">Road</button>
+            <button onclick="filterSelection('mountain')" class="tab-btn text-gray-500 font-bold italic border-b-2 border-transparent hover:text-white transition-colors pb-4 uppercase tracking-wider text-sm">Mountain</button>
+            <button onclick="filterSelection('electric')" class="tab-btn text-gray-500 font-bold italic border-b-2 border-transparent hover:text-white transition-colors pb-4 uppercase tracking-wider text-sm">Electric</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16" id="bike-grid">
+            
+            <div class="bike-card group cursor-pointer filter-item road w-full">
+                <div class="relative w-full aspect-[4/5] bg-gradient-to-b from-zinc-800 to-zinc-900 overflow-hidden">
+                    
+                    <div class="absolute top-0 left-0 z-20">
+                        <span class="bg-brand-orange text-white text-[11px] font-bold px-4 py-2 uppercase italic tracking-widest">New Arrival</span>
+                    </div>
+
+                    <img src="images/gallery 1.jpg" alt="Veloce Pro RS" class="bike-img relative z-10 w-full h-full object-cover transition-transform duration-500 ease-out">
+                </div>
+                
+                <div class="mt-6 space-y-1">
+                    <p class="text-gray-500 text-[11px] font-bold uppercase tracking-[0.2em] group-hover:text-white transition-colors">Road / Aero</p>
+                    <div class="flex justify-between items-end">
+                        <h3 class="font-sport text-3xl text-white italic uppercase leading-none tracking-tighter group-hover:text-brand-orange transition-colors">Veloce Pro RS</h3>
+                        <p class="font-sport text-2xl text-brand-orange italic">$4,200</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bike-card group cursor-pointer filter-item mountain w-full">
+                <div class="relative w-full aspect-[4/5] bg-gradient-to-b from-zinc-800 to-zinc-900 overflow-hidden">
+                    
+                    <img src="images/gallery 3.jpg" alt="Apex Trail 29" class="bike-img relative z-10 w-full h-full object-cover transition-transform duration-500 ease-out">
+                </div>
+                
+                <div class="mt-6 space-y-1">
+                    <p class="text-gray-500 text-[11px] font-bold uppercase tracking-[0.2em] group-hover:text-white transition-colors">MTB / Trail</p>
+                    <div class="flex justify-between items-end">
+                        <h3 class="font-sport text-3xl text-white italic uppercase leading-none tracking-tighter group-hover:text-brand-orange transition-colors">Apex Trail 29</h3>
+                        <p class="font-sport text-2xl text-brand-orange italic">$3,850</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bike-card group cursor-pointer filter-item electric w-full">
+                <div class="relative w-full aspect-[4/5] bg-gradient-to-b from-zinc-800 to-zinc-900 overflow-hidden">
+                    
+                    <img src="images/hero1.jpg" alt="Volt-E Urban" class="bike-img relative z-10 w-full h-full object-cover transition-transform duration-500 ease-out">
+                </div>
+                
+                <div class="mt-6 space-y-1">
+                    <p class="text-gray-500 text-[11px] font-bold uppercase tracking-[0.2em] group-hover:text-white transition-colors">Electric / City</p>
+                    <div class="flex justify-between items-end">
+                        <h3 class="font-sport text-3xl text-white italic uppercase leading-none tracking-tighter group-hover:text-brand-orange transition-colors">Volt-E Urban</h3>
+                        <p class="font-sport text-2xl text-brand-orange italic">$5,100</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bike-card group cursor-pointer filter-item road w-full">
+                <div class="relative w-full aspect-[4/5] bg-gradient-to-b from-zinc-800 to-zinc-900 overflow-hidden">
+                    
+                    <img src="images/male.jpg" alt="Strada GT" class="bike-img relative z-10 w-full h-full object-cover transition-transform duration-500 ease-out">
+                </div>
+                
+                <div class="mt-6 space-y-1">
+                    <p class="text-gray-500 text-[11px] font-bold uppercase tracking-[0.2em] group-hover:text-white transition-colors">Road / Endurance</p>
+                    <div class="flex justify-between items-end">
+                        <h3 class="font-sport text-3xl text-white italic uppercase leading-none tracking-tighter group-hover:text-brand-orange transition-colors">Strada GT</h3>
+                        <p class="font-sport text-2xl text-brand-orange italic">$3,200</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bike-card group cursor-pointer filter-item mountain w-full">
+                <div class="relative w-full aspect-[4/5] bg-gradient-to-b from-zinc-800 to-zinc-900 overflow-hidden">
+                    
+                    <div class="absolute top-0 left-0 z-20">
+                        <span class="bg-white text-black text-[11px] font-bold px-4 py-2 uppercase italic tracking-widest">Best Seller</span>
+                    </div>
+
+                    <img src="images/handle.png" alt="Ridge Destroyer" class="bike-img relative z-10 w-full h-full object-cover transition-transform duration-500 ease-out">
+                </div>
+                
+                <div class="mt-6 space-y-1">
+                    <p class="text-gray-500 text-[11px] font-bold uppercase tracking-[0.2em] group-hover:text-white transition-colors">MTB / Downhill</p>
+                    <div class="flex justify-between items-end">
+                        <h3 class="font-sport text-3xl text-white italic uppercase leading-none tracking-tighter group-hover:text-brand-orange transition-colors">Ridge Destroyer</h3>
+                        <p class="font-sport text-2xl text-brand-orange italic">$5,500</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bike-card group cursor-pointer filter-item electric w-full">
+                <div class="relative w-full aspect-[4/5] bg-gradient-to-b from-zinc-800 to-zinc-900 overflow-hidden">
+                    
+                    <img src="images/helmet.png" alt="Volt-X Mountain" class="bike-img relative z-10 w-full h-full object-cover transition-transform duration-500 ease-out">
+                </div>
+                
+                <div class="mt-6 space-y-1">
+                    <p class="text-gray-500 text-[11px] font-bold uppercase tracking-[0.2em] group-hover:text-white transition-colors">Electric / MTB</p>
+                    <div class="flex justify-between items-end">
+                        <h3 class="font-sport text-3xl text-white italic uppercase leading-none tracking-tighter group-hover:text-brand-orange transition-colors">Volt-X Mountain</h3>
+                        <p class="font-sport text-2xl text-brand-orange italic">$6,200</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="w-full bg-brand-black border-t border-white/10 pt-12 pb-6 md:pt-20 md:pb-10">
+        <div class="max-w-[1800px] mx-auto px-6 md:px-12">
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-12 mb-12">
+                
+                <div class="md:col-span-4 flex flex-col items-start pr-0 md:pr-12">
+                    <div class="flex items-center gap-1 mb-8">
+                        <span class="font-logo text-3xl font-bold tracking-widest text-white">CELERO</span>
+                        <div class="w-0 h-0 border-l-[8px] border-l-transparent border-b-[8px] border-b-brand-orange border-r-[8px] border-r-transparent mb-3 ml-[-2px]"></div>
+                    </div>
+                    
+                    <p class="text-gray-400 text-sm leading-relaxed mb-10">
+                        Ride beyond limits. Celero is dedicated to engineering the world's most advanced bicycles for the modern athlete.
+                    </p>
+
+                    <div class="w-full grid grid-cols-4 gap-2">
+                        <img src="images/gallery 1.jpg" alt="Gallery 1" class="w-full h-20 object-cover cursor-pointer bg-gray-800">
+                        <img src="images/gallery 2.jpg" alt="Gallery 2" class="w-full h-20 object-cover cursor-pointer bg-gray-800">
+                        <img src="images/gallery 3.jpg" alt="Gallery 3" class="w-full h-20 object-cover cursor-pointer bg-gray-800">
+                        <img src="images/gallery 4.jpg" alt="Gallery 4" class="w-full h-20 object-cover cursor-pointer bg-gray-800">
+                    </div>
+                </div>
+
+                <div class="md:col-span-2">
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-8">Explore</h4>
+                    <ul class="space-y-6 text-sm font-medium text-gray-400">
+                        <li><a href="#" class="hover:text-brand-orange transition-colors">Our Story</a></li>
+                        <li><a href="#" class="hover:text-brand-orange transition-colors">Road Bikes</a></li>
+                        <li><a href="#" class="hover:text-brand-orange transition-colors">Mountain Bikes</a></li>
+                        <li><a href="#" class="hover:text-brand-orange transition-colors">Electric</a></li>
+                        <li><a href="#" class="hover:text-brand-orange transition-colors">Find a Dealer</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-2">
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-8">Support</h4>
+                    <ul class="space-y-6 text-sm font-medium text-gray-400">
+                        <li><a href="#" class="hover:text-brand-orange transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-brand-orange transition-colors">Warranty</a></li>
+                        <li><a href="#" class="hover:text-brand-orange transition-colors">Product Registration</a></li>
+                        <li><a href="#" class="hover:text-brand-orange transition-colors">Shipping & Returns</a></li>
+                        <li><a href="#" class="hover:text-brand-orange transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-4">
+                    <h4 class="text-white font-bold uppercase tracking-widest text-sm mb-8">Follow Us</h4>
+                    <p class="text-gray-400 text-sm mb-8">
+                        Join our community. Follow us for the latest drops, events, and behind-the-scenes content.
+                    </p>
+                    
+                    <div class="flex gap-4">
+                        <a href="#" class="w-12 h-12 border border-white/10 flex items-center justify-center text-white hover:text-brand-orange hover:border-brand-orange transition-all duration-300">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 border border-white/10 flex items-center justify-center text-white hover:text-brand-orange hover:border-brand-orange transition-all duration-300">
+                            <i class="fa-brands fa-telegram text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 border border-white/10 flex items-center justify-center text-white hover:text-brand-orange hover:border-brand-orange transition-all duration-300">
+                            <i class="fa-brands fa-tiktok text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-gray-500 text-xs tracking-wide">
+                    &copy; 2024 CELERO BICYCLES. ALL RIGHTS RESERVED.
+                </p>
+                <div class="flex gap-8 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookie Settings</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        function filterSelection(category) {
+            var x, i;
+            x = document.getElementsByClassName("filter-item");
+            var btns = document.getElementsByClassName("tab-btn");
+            
+            // 1. Handle Active Button State
+            // Convert HTMLCollection to Array to easily iterate
+            Array.from(btns).forEach(btn => {
+                // Check if this button's onclick text matches the category
+                // This is a simple way: we reset all then set the clicked one
+                btn.classList.remove("active");
+                // "this" keyword won't work easily inside this function structure without passing event
+                // so we use a simpler logic below in the loop.
+            });
+
+            // Re-loop to find the button that was clicked (based on the onclick attribute)
+            // Or simpler: The user clicks the button, we can pass 'this' in the function call in future.
+            // For now, let's just do the filtering logic which is the critical part.
+            
+            if (category == "all") category = "";
+            for (i = 0; i < x.length; i++) {
+                removeClass(x[i], "hidden");
+                if (x[i].className.indexOf(category) == -1) {
+                    addClass(x[i], "hidden");
+                }
+            }
+            
+            // Highlight the correct button manually based on category
+            // Reset all
+            for (let btn of btns) { btn.classList.remove("active"); }
+            
+            // Set Active
+            // We find the button that corresponds to the category
+            // This relies on the buttons being in order or having IDs. 
+            // Let's use a simpler approach: 
+            // Since we didn't pass 'this', we will just update the filtering. 
+            // To make the buttons highlight, update the HTML onclick to pass 'this'
+            // But to keep it simple for you:
+            // Just click the button -> it filters.
+        }
+
+        // Helper functions
+        function addClass(element, name) {
+            var arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (var i = 0; i < arr2.length; i++) {
+                if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+            }
+        }
+
+        function removeClass(element, name) {
+            var arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (var i = 0; i < arr2.length; i++) {
+                while (arr1.indexOf(arr2[i]) > -1) {
+                    arr1.splice(arr1.indexOf(arr2[i]), 1);     
+                }
+            }
+            element.className = arr1.join(" ");
+        }
+
+        // Better Active State Handling
+        // Add event listeners to buttons to toggle 'active' class
+        var btnContainer = document.getElementById("filter-container");
+        var btns = btnContainer.getElementsByClassName("tab-btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function(){
+                var current = document.getElementsByClassName("active");
+                if (current.length > 0) { 
+                    current[0].className = current[0].className.replace(" active", "");
+                }
+                this.className += " active";
+            });
+        }
+    </script>
+</body>
+</html>
